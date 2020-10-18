@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import "./App.scss";
 import Header from "./component/Header/Header";
@@ -7,8 +7,16 @@ import PostList from "./component/Posts/PostList/PostList";
 import Button from "./component/Button/Button";
 import { fetchPosts } from "./actions";
 
+const initialState = false;
+
 function App(props) {
-  const getPosts = () => props.fetchPosts();
+  const [hideButton, setHideButton] = useState(initialState);
+  const getPosts = () => {
+    props.fetchPosts();
+    toggleBtn();
+  };
+
+  const toggleBtn = () => setHideButton(!hideButton);
 
   return (
     <div data-test="app">
@@ -16,7 +24,9 @@ function App(props) {
 
       <main>
         <Headline header={"post"} desc="click the button to render posts" />
-        <Button text="Get Posts" emitEvent={getPosts}></Button>
+        {!hideButton ? (
+          <Button text="Get Posts" emitEvent={getPosts}></Button>
+        ) : null}
         <PostList posts={props.posts}></PostList>
       </main>
     </div>

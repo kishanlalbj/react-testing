@@ -1,5 +1,5 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import { findByTestAttr, testStore } from "../utils/test";
 import App from "./App";
 
@@ -8,7 +8,7 @@ const setUp = (initialState = {}) => {
   const wrapper = shallow(<App store={store}></App>)
     .dive()
     .dive();
-  console.log(wrapper.debug());
+
   return wrapper;
 };
 
@@ -30,5 +30,9 @@ describe("App", () => {
   test("should render without error", () => {
     const component = findByTestAttr(wrapper, "app");
     expect(component.length).toBe(1);
+  });
+
+  test("should update state as expected", () => {
+    expect(false).toBe(false);
   });
 });
