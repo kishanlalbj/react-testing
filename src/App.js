@@ -11,7 +11,7 @@ function App(props) {
   const getPosts = () => props.fetchPosts();
 
   return (
-    <div>
+    <div data-test="app">
       <Header></Header>
 
       <main>
