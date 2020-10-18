@@ -20,13 +20,26 @@ describe("Button", () => {
 
   describe("Render Button", () => {
     let wrapper;
+    let mockFn;
     beforeEach(() => {
-      wrapper = setUp();
+      mockFn = jest.fn();
+      const initialProps = {
+        text: "test",
+        emitEvent: mockFn,
+      };
+      wrapper = setUp(initialProps);
     });
 
     test("should render a button", () => {
       const button = findByTestAttr(wrapper, "button");
       expect(button.length).toBe(1);
+    });
+
+    test("should emit callback on click", () => {
+      const button = findByTestAttr(wrapper, "button");
+      button.simulate("click");
+      const callback = mockFn.mock.calls;
+      expect(callback.length).toBe(1);
     });
   });
 });
