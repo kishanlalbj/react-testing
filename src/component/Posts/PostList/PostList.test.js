@@ -43,6 +43,14 @@ describe("Post List", () => {
       expect(component.length).toBe(1);
     });
 
+    test("should render exact number of posts", () => {
+      const wrapper = setUp({
+        posts: [...initialProps.posts, { title: "test", body: "test" }],
+      });
+      const component = wrapper.find(Post);
+      expect(component.length).toBe(2);
+    });
+
     test("should render message if no posts are there", () => {
       const wrapper = setUp({ posts: [] });
       const component = findByTestAttr(wrapper, "postlist-message");
