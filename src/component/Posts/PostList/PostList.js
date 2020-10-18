@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Post from "../Posts/Post";
+import "./PostList.scss";
 
 const PostList = (props) => {
   const renderPosts = () => {
@@ -12,7 +13,11 @@ const PostList = (props) => {
       return <p data-test="postlist-message">No posts found</p>;
     }
   };
-  return <div data-test="postlist">{renderPosts()}</div>;
+  return (
+    <div data-test="postlist" className="postlist">
+      {renderPosts()}
+    </div>
+  );
 };
 
 PostList.propTypes = {

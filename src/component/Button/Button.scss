@@ -1,0 +1,12 @@
+button {
+  padding: 10px;
+  background-color: crimson;
+  color: white;
+  cursor: pointer;
+  border: 1px solid crimson;
+
+  &:hover {
+    background-color: whitesmoke;
+    color: crimson;
+  }
+}
