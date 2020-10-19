@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import "./App.scss";
+
 import Header from "./component/Header/Header";
 import Headline from "./component/Headline/Headline";
 import PostList from "./component/Posts/PostList/PostList";

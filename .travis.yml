@@ -1,0 +1,11 @@
+dist: xenial
+language: node_js
+node_js:
+  - "stable"
+addons:
+  sonarcloud:
+    organization: "kishanlalbj-github"
+script:
+  - npm run coverage
+  - sonar-scanner
+  - npm run build
